@@ -18,7 +18,7 @@ function createSchoolsTable() {
     return __awaiter(this, void 0, void 0, function* () {
         const query = `
     CREATE TABLE IF NOT EXISTS schools (
-      id INT AUTO_INCREMENT PRIMARY KEY,
+      id SERIAL PRIMARY KEY, 
       name VARCHAR(255) NOT NULL,
       address VARCHAR(255) NOT NULL,
       latitude FLOAT NOT NULL,
@@ -26,10 +26,10 @@ function createSchoolsTable() {
     );`;
         try {
             yield db_1.default.query(query);
-            console.log('Schools Table Created');
+            console.log("Schools table created successfully");
         }
         catch (error) {
-            console.error('Error creating table:', error);
+            console.error("Error creating table:", error);
         }
     });
 }

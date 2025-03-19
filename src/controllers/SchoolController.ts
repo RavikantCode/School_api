@@ -25,8 +25,10 @@ export class SchoolController{
     }
 
     static getSchool:RequestHandler=async(req:Request,res:Response):Promise<any>=>{
-        const {lat1,lon1} = req.body;
-        const schools = await SchoolService.getSchools(lat1,lon1);
+        const {latitude,longitude} = req.body;
+  
+        
+        const schools = await SchoolService.getSchools(latitude,longitude);
         return res.status(200).json({
             schools
         })

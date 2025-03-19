@@ -18,9 +18,9 @@ const db_1 = __importDefault(require("./config/db"));
 function startServer() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
-            const connection = yield db_1.default.getConnection();
+            const client = yield db_1.default.connect();
             console.log('Database connected');
-            connection.release();
+            client.release();
             app_1.default.listen(PORT, () => {
                 console.log(`Server is running on port ${PORT}`);
             });

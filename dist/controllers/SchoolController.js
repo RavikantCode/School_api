@@ -38,8 +38,8 @@ SchoolController.addSchool = (req, res) => __awaiter(void 0, void 0, void 0, fun
     }
 });
 SchoolController.getSchool = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    const { lat1, lon1 } = req.body;
-    const schools = yield SchoolService_1.SchoolService.getSchools(lat1, lon1);
+    const { latitude, longitude } = req.body;
+    const schools = yield SchoolService_1.SchoolService.getSchools(latitude, longitude);
     return res.status(200).json({
         schools
     });

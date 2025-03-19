@@ -18,16 +18,16 @@ class SchoolRepo {
     static addSchool(school) {
         return __awaiter(this, void 0, void 0, function* () {
             const { name, address, latitude, longitude } = school;
-            const query = `INSERT INTO schools (name,address,latitude,longitude) VALUES (?,?,?,?)`;
+            const query = `INSERT INTO schools (name,address,latitude,longitude) VALUES ($1,$2,$3,$4)`;
             const values = [name, address, latitude, longitude];
-            yield db_1.default.execute(query, values);
+            yield db_1.default.query(query, values);
         });
     }
     static getSchools() {
         return __awaiter(this, void 0, void 0, function* () {
             const query = `SELECT * FROM schools`;
-            const [schools] = yield db_1.default.execute(query);
-            return schools;
+            const { rows } = yield db_1.default.query(query);
+            return rows;
         });
     }
 }

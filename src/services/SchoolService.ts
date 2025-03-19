@@ -7,11 +7,13 @@ export class SchoolService{
         return await SchoolRepo.addSchool(school)
     }
     static async getSchools(userLat:number,userLon:number){
+        // console.log(userLat,userLon);
+        
         const schools =  await SchoolRepo.getSchools();
         return schools
         .map((school: any) => ({
           ...school,
-          distance: GetDistance(userLat, userLon, school.latitude, school.longitude),
+          distance: GetDistance(userLat, userLon, parseFloat(school.latitude), parseFloat(school.longitude)),
         }))
         .sort((a:{distance:number}, b:{distance:number}) => a.distance - b.distance);
     }

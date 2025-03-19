@@ -1,5 +1,4 @@
 
-import { start } from "repl";
 import app from "./app";
 
 const PORT = process.env.PORT || 3000;
@@ -7,9 +6,9 @@ import pool from './config/db';
 
 async function startServer() {
         try {
-            const connection = await pool.getConnection();
+            const client = await pool.connect();
             console.log('Database connected');
-            connection.release();
+            client.release();
 
             app.listen(PORT,()=>{
                 console.log(`Server is running on port ${PORT}`);

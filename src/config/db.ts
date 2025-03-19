@@ -1,14 +1,11 @@
 const dotenv = require('dotenv'); 
-const mysql = require('mysql');
+import {Pool} from 'pg';
 
 dotenv.config();
 
-const pool = mysql.createPool({
-    host:process.env.DB_HOST,
-    user:process.env.DB_USER,
-    password:process.env.DB_PASSWORD,
-    database:process.env.DB_NAME,
-    waitforconnections: true,
+const pool = new Pool({
+    connectionString:process.env.DATABASE_URL,
+    ssl:true,
 })
 
 export default pool;

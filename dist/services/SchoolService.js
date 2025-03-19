@@ -20,9 +20,10 @@ class SchoolService {
     }
     static getSchools(userLat, userLon) {
         return __awaiter(this, void 0, void 0, function* () {
+            // console.log(userLat,userLon);
             const schools = yield SchoolRepo_1.SchoolRepo.getSchools();
             return schools
-                .map((school) => (Object.assign(Object.assign({}, school), { distance: (0, Haversine_1.GetDistance)(userLat, userLon, school.latitude, school.longitude) })))
+                .map((school) => (Object.assign(Object.assign({}, school), { distance: (0, Haversine_1.GetDistance)(userLat, userLon, parseFloat(school.latitude), parseFloat(school.longitude)) })))
                 .sort((a, b) => a.distance - b.distance);
         });
     }
