@@ -7,7 +7,7 @@ export class SchoolService{
         return await SchoolRepo.addSchool(school)
     }
     static async getSchools(userLat:number,userLon:number){
-        // console.log(userLat,userLon);
+        
         
         const schools =  await SchoolRepo.getSchools();
         return schools
